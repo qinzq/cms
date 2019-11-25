@@ -17,7 +17,7 @@ public class LinkServiceImpl implements ILinkService {
     private ILinkDao linkDao;
 
     @Override
-    public void addLink(Link link) throws CustomerException {
+    public void addOrUpdateLink(Link link) throws CustomerException {
         if (link == null) {
             throw new CustomerException(CodeUtil.PARAM_NULL,"参数为空");
         }
@@ -29,17 +29,9 @@ public class LinkServiceImpl implements ILinkService {
         linkDao.deleteById(id);
     }
 
-    @Override
-    public void updateLink(Link link) throws CustomerException {
-        if (link == null) {
-            throw new CustomerException(CodeUtil.PARAM_NULL,"参数为空");
-        }
-        linkDao.save(link);
-    }
 
     @Override
     public Link selectLinkById(int id) throws CustomerException {
-
         return linkDao.findLinkById(id);
     }
 
